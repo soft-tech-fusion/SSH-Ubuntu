@@ -10,16 +10,16 @@ provider "aws" {
 terraform {
   required_version = ">= 0.14"
   backend "s3" {
-    bucket         = "techfusion-state-bucket"
-    key            = "global/s3/dev/ub-ssh/terraform.tfstate"
-    region         = "eu-west-2"
+    bucket = "techfusion-state-bucket"
+    key    = "global/s3/dev/ub-ssh/terraform.tfstate"
+    region = "eu-west-2"
     /* IMPORTANT!! 
     This needs to be commented on first pass 
     */
     #############################################
     dynamodb_table = "techfusion-state-table"
     #############################################
-    encrypt        = true
+    encrypt = true
   }
 }
 
@@ -54,8 +54,8 @@ resource "aws_route_table" "route-table" {
   }
 
   route {
-    ipv6_cidr_block        = "::/0"
-    gateway_id = aws_internet_gateway.gw.id
+    ipv6_cidr_block = "::/0"
+    gateway_id      = aws_internet_gateway.gw.id
   }
 
   tags = {
